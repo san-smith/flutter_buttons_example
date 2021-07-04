@@ -9,12 +9,14 @@ class BaseButton extends StatelessWidget {
     Key? key,
     required this.type,
     required this.scale,
+    this.style,
     this.onPressed,
     required this.child,
   }) : super(key: key);
 
   final ButtonType type;
   final ButtonScale scale;
+  final ButtonStyle? style;
   final void Function()? onPressed;
   final Widget child;
 
@@ -22,7 +24,7 @@ class BaseButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final defaultStyle = baseButtonStyle.byType(type, blueButtonThemeData).byScale(scale);
     return TextButton(
-      style: defaultStyle,
+      style: style != null ? style!.merge(defaultStyle) : defaultStyle,
       onPressed: onPressed,
       child: child,
     );
