@@ -16,10 +16,14 @@ const blue = Color(0xFF1BA1E2);
 const secondary = Color.fromRGBO(0, 28, 61, 0.05);
 const white = Colors.white;
 const error = Color(0xFFFF3B30);
+const disabledBackground = Color(0xFF979592);
+const disabledForeground = Color(0xFFD1D1D6);
 
 final blueButtonThemeData = CustomButtonThemeData.fromColors(
   primary: blue,
   inverse: white,
   secondary: secondary,
   error: error,
+  disabledBackground: disabledBackground,
+  disabledForeground: disabledForeground,
 );

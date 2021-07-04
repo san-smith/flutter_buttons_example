@@ -21,9 +21,9 @@ extension ButtonStyleByType on ButtonStyle {
 
   ButtonStyle _copyWithCustom(CustomButtonStyle style) {
     return copyWith(
-      backgroundColor: MaterialStateProperty.all(style.backgroundColor),
-      foregroundColor: MaterialStateProperty.all(style.foregroundColor),
-      side: MaterialStateProperty.all(style.side),
+      backgroundColor: MaterialStateProperty.resolveWith((states) => states.contains(MaterialState.disabled) ? style.disabledBackgroundColor : style.backgroundColor),
+      foregroundColor: MaterialStateProperty.resolveWith((states) => states.contains(MaterialState.disabled) ? style.disabledForegroundColor : style.foregroundColor),
+      side: MaterialStateProperty.resolveWith((states) => states.contains(MaterialState.disabled) ? style.disabledSide : style.side),
     );
   }
 }

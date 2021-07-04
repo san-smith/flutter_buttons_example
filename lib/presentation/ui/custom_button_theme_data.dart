@@ -20,27 +20,40 @@ class CustomButtonThemeData {
     required Color inverse,
     required Color secondary,
     required Color error,
+    required Color disabledBackground,
+    required Color disabledForeground,
   }) {
     return CustomButtonThemeData(
       primary: CustomButtonStyle(
         backgroundColor: primary,
         foregroundColor: inverse,
+        disabledBackgroundColor: disabledBackground,
+        disabledForegroundColor: disabledForeground,
       ),
       secondary: CustomButtonStyle(
         backgroundColor: secondary,
         foregroundColor: primary,
+        disabledBackgroundColor: disabledBackground,
+        disabledForegroundColor: disabledForeground,
       ),
       outlined: CustomButtonStyle(
         backgroundColor: Colors.transparent,
         foregroundColor: primary,
+        disabledForegroundColor: disabledForeground,
         side: BorderSide(
           color: primary,
+          width: 2,
+        ),
+        disabledSide: BorderSide(
+          color: disabledBackground,
           width: 2,
         ),
       ),
       error: CustomButtonStyle(
         backgroundColor: error,
         foregroundColor: inverse,
+        disabledBackgroundColor: disabledBackground,
+        disabledForegroundColor: disabledForeground,
       ),
     );
   }
