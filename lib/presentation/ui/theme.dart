@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_buttons_example/presentation/ui/custom_button_theme_data.dart';
 
 final baseButtonStyle = TextButton.styleFrom(
   minimumSize: const Size(92, 48),
@@ -9,4 +10,16 @@ final baseButtonStyle = TextButton.styleFrom(
     fontWeight: FontWeight.w500,
     letterSpacing: 0.2,
   ),
+);
+
+const blue = Color(0xFF1BA1E2);
+const secondary = Color.fromRGBO(0, 28, 61, 0.05);
+const white = Colors.white;
+const error = Color(0xFFFF3B30);
+
+final blueButtonThemeData = CustomButtonThemeData.fromColors(
+  primary: blue,
+  inverse: white,
+  secondary: secondary,
+  error: error,
 );
