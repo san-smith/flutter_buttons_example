@@ -1,17 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_buttons_example/presentation/ui/theme.dart';
 
 import 'presentation/home/home_screen.dart';
+import 'presentation/ui/custom_button_theme_data.dart';
 
 void main() {
   runApp(Application());
 }
 
+final ValueNotifier<ThemeMode> themeModeNotifier = ValueNotifier(ThemeMode.light);
+
+CustomButtonThemeData get buttonTheme => themeModeNotifier.value == ThemeMode.dark ? darkBlueButtonThemeData : blueButtonThemeData;
+
 class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Buttons Example',
-      home: HomeScreen(),
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: themeModeNotifier,
+      builder: (_, mode, __) => MaterialApp(
+        title: 'Flutter Buttons Example',
+        theme: lightTheme,
+        darkTheme: darkTheme,
+        themeMode: mode,
+        home: HomeScreen(),
+      ),
     );
   }
 }

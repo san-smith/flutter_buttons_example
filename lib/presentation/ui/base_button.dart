@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_buttons_example/main.dart';
 
 import 'button_scale.dart';
 import 'button_type.dart';
@@ -22,7 +23,7 @@ class BaseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final defaultStyle = baseButtonStyle.byType(type, blueButtonThemeData).byScale(scale);
+    final defaultStyle = baseButtonStyle.byType(type, buttonTheme).byScale(scale);
     return TextButton(
       style: style != null ? style!.merge(defaultStyle) : defaultStyle,
       onPressed: onPressed,

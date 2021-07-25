@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_buttons_example/main.dart';
 import 'package:flutter_buttons_example/presentation/home/label.dart';
 import 'package:flutter_buttons_example/presentation/ui/base_button.dart';
 import 'package:flutter_buttons_example/presentation/ui/button_scale.dart';
@@ -35,7 +36,25 @@ class _HomeScreenState extends State<HomeScreen> {
         SizedBox(height: 20),
         _buildErrorRow(),
         SizedBox(height: 20),
-        _buildCustomRow()
+        _buildCustomRow(),
+        SizedBox(height: 20),
+        _buildModeSwitcher(),
+      ],
+    );
+  }
+
+  Widget _buildModeSwitcher() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Label('Dark mode:'),
+        SizedBox(width: 10),
+        Switch(
+          value: themeModeNotifier.value == ThemeMode.dark,
+          onChanged: (value) {
+            themeModeNotifier.value = value ? ThemeMode.dark : ThemeMode.light;
+          },
+        ),
       ],
     );
   }
