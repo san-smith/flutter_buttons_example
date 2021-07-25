@@ -4,6 +4,9 @@ import 'package:flutter_buttons_example/presentation/home/label.dart';
 import 'package:flutter_buttons_example/presentation/ui/base_button.dart';
 import 'package:flutter_buttons_example/presentation/ui/button_scale.dart';
 import 'package:flutter_buttons_example/presentation/ui/button_type.dart';
+import 'package:flutter_buttons_example/presentation/ui/theme.dart';
+
+import 'color_item.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -39,6 +42,8 @@ class _HomeScreenState extends State<HomeScreen> {
         _buildCustomRow(),
         SizedBox(height: 20),
         _buildModeSwitcher(),
+        SizedBox(height: 20),
+        _buildColorSwitcher()
       ],
     );
   }
@@ -55,6 +60,21 @@ class _HomeScreenState extends State<HomeScreen> {
             themeModeNotifier.value = value ? ThemeMode.dark : ThemeMode.light;
           },
         ),
+      ],
+    );
+  }
+
+  Widget _buildColorSwitcher() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ColorItem(value: ThemeColors.blue, title: 'Blue'),
+        SizedBox(width: 20),
+        ColorItem(value: ThemeColors.teal, title: 'Teal'),
+        SizedBox(width: 20),
+        ColorItem(value: ThemeColors.yellow, title: 'Yellow'),
+        SizedBox(width: 20),
+        ColorItem(value: ThemeColors.green, title: 'Green'),
       ],
     );
   }

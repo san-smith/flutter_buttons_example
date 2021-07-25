@@ -10,19 +10,24 @@ void main() {
 
 final ValueNotifier<ThemeMode> themeModeNotifier = ValueNotifier(ThemeMode.light);
 
-CustomButtonThemeData get buttonTheme => themeModeNotifier.value == ThemeMode.dark ? darkBlueButtonThemeData : blueButtonThemeData;
+final ValueNotifier<ThemeColors> themeColorNotifier = ValueNotifier(ThemeColors.blue);
+
+CustomButtonThemeData get buttonTheme => themeModeNotifier.value == ThemeMode.dark ? themes[themeColorNotifier.value]! : darkThemes[themeColorNotifier.value]!;
 
 class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<ThemeMode>(
       valueListenable: themeModeNotifier,
-      builder: (_, mode, __) => MaterialApp(
-        title: 'Flutter Buttons Example',
-        theme: lightTheme,
-        darkTheme: darkTheme,
-        themeMode: mode,
-        home: HomeScreen(),
+      builder: (_, mode, __) => ValueListenableBuilder(
+        valueListenable: themeColorNotifier,
+        builder: (_, __, ___) => MaterialApp(
+          title: 'Flutter Buttons Example',
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          themeMode: mode,
+          home: HomeScreen(),
+        ),
       ),
     );
   }
